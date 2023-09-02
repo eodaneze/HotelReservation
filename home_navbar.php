@@ -51,7 +51,7 @@
                                 </div>
                                 <a href="contact.php" class="nav-item nav-link">Contact</a>
                             </div>
-                         
+                            <a href="./userRegister.php" class="nav-item nav-link">Register</a>
                         </div>
                     </nav>
                 </div>

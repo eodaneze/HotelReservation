@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <form>
+                            <form action="./includes/userRegister.php" method="post">
                                 <div class="row g-3">
                                     <div class="col-md-12">
                                         <div class="form-floating">
@@ -94,7 +94,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Register Now</button>
+                                        <button class="btn btn-primary w-100 py-3" name="register">Register Now</button>
                                     </div>
                                 </div>
                             </form>
@@ -110,7 +110,10 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
-  <?php require_once('./script.php') ?>
+  <?php
+   require_once('./script.php');
+   require_once('./alertify.php');
+    ?>
 </body>
 
 </html>
