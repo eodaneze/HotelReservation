@@ -1,3 +1,4 @@
+<?php require_once('./includes/connection.php') ?> 
  <!-- Header Start -->
  <div class="container-fluid bg-dark px-0">
             <div class="row gx-0">
@@ -50,8 +51,45 @@
                                     </div>
                                 </div>
                                 <a href="contact.php" class="nav-item nav-link">Contact</a>
+                                <?php 
+                                  if(isset($_SESSION['userId'])){
+                                     $userId = $_SESSION['userId'];
+                                     $sql = "SELECT * FROM user WHERE user_id = '$userId'";
+                                     $result = mysqli_query($conn, $sql);
+                                     $row = mysqli_fetch_assoc($result);
+                                     $name = $row['name'];
+                                     $getFirstname = explode(' ', $name);
+                                     $firstname = $getFirstname[0];
+
+
+                                     ?>
+                                          <div class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Welcome <?=$firstname?></a>
+                                            <div class="dropdown-menu rounded-0 m-0">
+                                                <a href="./userRegister.php" class="dropdown-item">My Account</a>
+                                                <a href="./userLogin.php" class="dropdown-item">Logout</a>
+                                                
+                                            </div>
+                                      </div>
+                                     <?php
+                                     
+                                  }else{
+                                    ?>
+                                            <div class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
+                                            <div class="dropdown-menu rounded-0 m-0">
+                                                <a href="./userRegister.php" class="dropdown-item">Register</a>
+                                                <a href="./userLogin.php" class="dropdown-item">Login</a>
+                                                
+                                            </div>
+                                        </div>
+                                  <?php
+                                  }
+                                
+                                ?>
+                               
                             </div>
-                            <a href="./userRegister.php" class="nav-item nav-link">Register</a>
+                            
                         </div>
                     </nav>
                 </div>

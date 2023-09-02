@@ -17,12 +17,12 @@
         <div class="container-fluid page-header mb-5 p-0" style="background-image: url(./assets/img/carousel-1.jpg);">
             <div class="container-fluid page-header-inner py-5">
                 <div class="container text-center pb-5">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">User Registration</h1>
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">User Login</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center text-uppercase">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Register</li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Login</li>
                         </ol>
                     </nav>
                 </div>
@@ -38,8 +38,8 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title text-center text-primary text-uppercase">User registration</h6>
-                    <h1 class="mb-5">Register To Book <span class="text-primary text-uppercase">Luxury Room</span></h1>
+                    <h6 class="section-title text-center text-primary text-uppercase">User Login</h6>
+                    <h1 class="mb-5">Login To Book <span class="text-primary text-uppercase">Luxury Room</span></h1>
                 </div>
                 <div class="row g-5">
                     <div class="col-lg-6">
@@ -60,14 +60,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <form action="./includes/userRegister.php" method="post">
+                            <form action="./includes/userLogin.php" method="post">
                                 <div class="row g-3">
-                                    <div class="col-md-12">
-                                        <div class="form-floating">
-                                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
-                                            <label for="name">Your Name</label>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col-md-6">
                                         <div class="form-floating">
                                             <input type="email" name="email" class="form-control" id="email" placeholder="Your Email">
@@ -76,25 +71,18 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" name="phone" class="form-control" id="email" placeholder="Your Phone">
-                                            <label for="email">Your Phone</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="text" name="address" class="form-control" id="email" placeholder="Your Address">
-                                            <label for="email">Your Address</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
                                             <input type="password" name="password" class="form-control" id="email" placeholder="Your Password">
                                             <label for="email">Your Password</label>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <input type="password" name="conpassword" class="form-control" id="email" placeholder="Your Password">
+                                            <label for="email">Confirm password</label>
+                                        </div>
+                                    </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" name="register">Register Now</button>
+                                        <button class="btn btn-primary w-100 py-3" name="login">Login Now</button>
                                     </div>
                                 </div>
                             </form>
