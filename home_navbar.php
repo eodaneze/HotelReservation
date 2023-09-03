@@ -67,7 +67,7 @@
                                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Welcome <?=$firstname?></a>
                                             <div class="dropdown-menu rounded-0 m-0">
                                                 <a href="./userRegister.php" class="dropdown-item">My Account</a>
-                                                <a href="./userLogin.php" class="dropdown-item">Logout</a>
+                                                <a href="./includes/logout.php" class="dropdown-item">Logout</a>
                                                 
                                             </div>
                                       </div>
