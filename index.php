@@ -72,31 +72,38 @@
                                             placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="date" id="date2" data-target-input="nearest">
                                         <input type="text" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker"/>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <select class="form-select">
-                                        <option selected>Adult</option>
-                                        <option value="1">Adult 1</option>
-                                        <option value="2">Adult 2</option>
-                                        <option value="3">Adult 3</option>
+                                        <option selected>Rooms</option>
+                                        <?php
+                                            $sql = "SELECT * FROM rooms";
+                                            $result = mysqli_query($conn, $sql);
+                                            while($row = mysqli_fetch_assoc($result)){
+                                                $name = $row['name'];
+                                                ?>
+                                                
+                                                <option value="1"><?=$name?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                     
                                     </select>
                                 </div>
+                                <div class="col-md-2">
+                                   <input type="number" class="form-control" placeholder="Adult">
+                                </div>
                                 <div class="col-md-3">
-                                    <select class="form-select">
-                                        <option selected>Child</option>
-                                        <option value="1">Child 1</option>
-                                        <option value="2">Child 2</option>
-                                        <option value="3">Child 3</option>
-                                    </select>
+                                     <input type="number" class="form-control" placeholder="Children">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-primary w-100" name="book">Submit</button>
+                            <button class="btn btn-primary w-100" name="book">Book</button>
                         </div>
                     </div>
                    </form>
@@ -137,8 +144,8 @@
                                 <div class="border rounded p-1">
                                     <div class="border rounded text-center p-4">
                                         <i class="fa fa-users fa-2x text-primary mb-2"></i>
-                                        <h2 class="mb-1" data-toggle="counter-up">1234</h2>
-                                        <p class="mb-0">Clients</p>
+                                        <h2 class="mb-1">1234</h2>
+                                        <p class="mb-0">Customers</p>
                                     </div>
                                 </div>
                             </div>
@@ -175,96 +182,46 @@
                     <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Rooms</span></h1>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="room-item shadow rounded overflow-hidden">
-                            <div class="position-relative">
-                                <img class="img-fluid" src="./assets/img/room-1.jpg" alt="">
-                                <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">$100/Night</small>
-                            </div>
-                            <div class="p-4 mt-2">
-                                <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">Junior Suite</h5>
-                                    <div class="ps-2">
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
+                    <?php
+                       $sql = "SELECT * FROM rooms";
+                       $result = mysqli_query($conn, $sql);
+                       while($row = mysqli_fetch_assoc($result)){
+                          $name = $row['name'];
+                          $price = $row['price'];
+                          $rating = $row['rating'];
+                          $pic = $row['pic'];
+                          $id = $row['room_id'];
+
+                          ?>
+                                 <form action="" method="post" class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="room-item shadow rounded overflow-hidden">
+                                        <div class="position-relative">
+                                            <img class="img-fluid" src="./includes/roomdp/<?=$pic?>" alt="">
+                                            <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4"><i class="fa fa-naira-sign"></i><?=number_format($price, 2)?>/Night</small>
+                                        </div>
+                                        <div class="p-4 mt-2">
+                                            <div class="d-flex justify-content-between mb-3">
+                                                <h5 class="mb-0"><?=$name?></h5>
+                                                <div class="ps-2">
+                                                    <small class="fa fa-star text-primary"></small>
+                                                    <small class="fa fa-star text-primary"></small>
+                                                    <small class="fa fa-star text-primary"></small>
+                                                    <small class="fa fa-star text-primary"></small>
+                                                    <small class="fa fa-star text-primary"></small>
+                                                </div>
+                                            </div>
+                                          
+                                            <p class="text-body mb-3">The Junior Suite room is a very wide room with 2 bath and free wifi. the room is 3 * 4 in length and same with the breadth</p>
+                                            <div class="d-flex justify-content-between">
+                                                <a class="btn btn-sm btn-primary rounded py-2 px-4" href="./roomDetails.php?id=<?=$id?>">View Detail</a>
+                                                <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex mb-3">
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
-                                    <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
-                                </div>
-                                <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                                <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="room-item shadow rounded overflow-hidden">
-                            <div class="position-relative">
-                                <img class="img-fluid" src="./assets/img/room-2.jpg" alt="">
-                                <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">$100/Night</small>
-                            </div>
-                            <div class="p-4 mt-2">
-                                <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">Executive Suite</h5>
-                                    <div class="ps-2">
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                    </div>
-                                </div>
-                                <div class="d-flex mb-3">
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
-                                    <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
-                                </div>
-                                <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                                <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="room-item shadow rounded overflow-hidden">
-                            <div class="position-relative">
-                                <img class="img-fluid" src="./assets/img/room-3.jpg" alt="">
-                                <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">$100/Night</small>
-                            </div>
-                            <div class="p-4 mt-2">
-                                <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">Super Deluxe</h5>
-                                    <div class="ps-2">
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                        <small class="fa fa-star text-primary"></small>
-                                    </div>
-                                </div>
-                                <div class="d-flex mb-3">
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
-                                    <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
-                                </div>
-                                <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
-                                <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </form>
+                          <?php
+                       }
+                    ?>
                 </div>
             </div>
         </div>
@@ -278,7 +235,7 @@
                     <div class="p-5">
                         <h6 class="section-title text-start text-white text-uppercase mb-3">Luxury Living</h6>
                         <h1 class="text-white mb-4">Discover A Brand Luxurious Hotel</h1>
-                        <p class="text-white mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+                        <p class="text-white mb-4">Our hotel is one of the best hotel in town and we offer different services that made our hotel to stand out among other hotels. Our services includes, Gyming, boxing and many more</p>
                         <a href="" class="btn btn-primary py-md-3 px-md-5 me-3">Our Rooms</a>
                         <a href="" class="btn btn-light py-md-3 px-md-5">Book A Room</a>
                     </div>
@@ -329,7 +286,7 @@
                                 </div>
                             </div>
                             <h5 class="mb-3">Rooms & Appartment</h5>
-                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                            <p class="text-body mb-0">Our rooms and appartments are well arrraneged to fit into your taste. </p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
@@ -340,7 +297,7 @@
                                 </div>
                             </div>
                             <h5 class="mb-3">Food & Restaurant</h5>
-                            <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                            <p class="text-body mb-0">We also offer food and restaurant service to our customers just to make sure that they feed well</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -518,7 +475,7 @@
 
         <?php  require_once('./home_footer.php') ?>
 
-
+  <script src="./assets/js/"></script>
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>

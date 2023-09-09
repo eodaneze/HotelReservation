@@ -16,7 +16,7 @@ require_once('./connection.php');
         exit();
 
      }else{
-     	$sql = "INSERT INTO user (name, email, phone, address, password)VALUES('$name', '$email', '$phone', '$address', '$password')";
+     	$sql = "INSERT INTO users (name, email, phone, address, password)VALUES('$name', '$email', '$phone', '$address', '$password')";
 
      	$result = mysqli_query($conn, $sql);
      	if($result){

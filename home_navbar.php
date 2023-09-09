@@ -1,6 +1,13 @@
 <?php require_once('./includes/connection.php') ?> 
  <!-- Header Start -->
- <div class="container-fluid bg-dark px-0">
+ <style>
+    .navbar-top{
+         position: sticky;
+         top: 0;
+         z-index: 10;
+    }
+ </style>
+ <div class="container-fluid bg-dark px-0 navbar-top">
             <div class="row gx-0">
                 <div class="col-lg-3 bg-dark d-none d-lg-block">
                     <a href="index.php" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
@@ -12,11 +19,11 @@
                         <div class="col-lg-7 px-5 text-start">
                             <div class="h-100 d-inline-flex align-items-center py-2 me-4">
                                 <i class="fa fa-envelope text-primary me-2"></i>
-                                <p class="mb-0">info@example.com</p>
+                                <p class="mb-0">info@hotelier.com</p>
                             </div>
                             <div class="h-100 d-inline-flex align-items-center py-2">
                                 <i class="fa fa-phone-alt text-primary me-2"></i>
-                                <p class="mb-0">+012 345 6789</p>
+                                <p class="mb-0">+2348164869025</p>
                             </div>
                         </div>
                         <div class="col-lg-5 px-5 text-end">
@@ -54,7 +61,7 @@
                                 <?php 
                                   if(isset($_SESSION['userId'])){
                                      $userId = $_SESSION['userId'];
-                                     $sql = "SELECT * FROM user WHERE user_id = '$userId'";
+                                     $sql = "SELECT * FROM users WHERE user_id = '$userId'";
                                      $result = mysqli_query($conn, $sql);
                                      $row = mysqli_fetch_assoc($result);
                                      $name = $row['name'];

@@ -1,6 +1,15 @@
 <?php
+ require_once('./includes/connection.php');
  require_once('./home_header.php');
  require_once('./home_navbar.php');
+ if(isset($_GET['id'])){
+    $room_id = $_GET['id'];
+    $sql = "SELECT * FROM rooms WHERE room_id = '$room_id'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $name = $row['name'];
+
+  }
 ?>
 <body>
     <div class="container-xxl bg-white p-0">
@@ -103,20 +112,9 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <form>
+                            <form action="./includes/booking.php" method="post">
                                 <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                            <label for="name">Your Name</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                            <label for="email">Your Email</label>
-                                        </div>
-                                    </div>
+                                  
                                     <div class="col-md-6">
                                         <div class="form-floating date" id="date3" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" />
@@ -131,39 +129,21 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <select class="form-select" id="select1">
-                                              <option value="1">Adult 1</option>
-                                              <option value="2">Adult 2</option>
-                                              <option value="3">Adult 3</option>
-                                            </select>
-                                            <label for="select1">Select Adult</label>
+                                            <input type="number" name="children" class="form-control">
+                                            <label for="select2">Number of children</label>
                                           </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <select class="form-select" id="select2">
-                                              <option value="1">Child 1</option>
-                                              <option value="2">Child 2</option>
-                                              <option value="3">Child 3</option>
-                                            </select>
-                                            <label for="select2">Select Child</label>
+                                            <input type="number" name="adult" class="form-control">
+                                            <label for="select2">Number of Adult</label>
                                           </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <select class="form-select" id="select3">
-                                              <option value="1">Room 1</option>
-                                              <option value="2">Room 2</option>
-                                              <option value="3">Room 3</option>
-                                            </select>
-                                            <label for="select3">Select A Room</label>
+                                            <input type="text" class="form-control" value="<?=$name?>">
+                                            <label for="select3">Room Name</label>
                                           </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
-                                            <label for="message">Special Request</label>
-                                        </div>
                                     </div>
                                     <div class="col-12">
                                         <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
