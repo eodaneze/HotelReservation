@@ -7,6 +7,7 @@ require_once("./connection.php");
     $roomCount = isset($_POST['roomCount']) ? trim($_POST['roomCount']) : "";
     $price = isset($_POST['price']) ? trim($_POST['price']) : "";
     $details = isset($_POST['details']) ? trim($_POST['details']) : "";
+    $status = "Available";
 
     $content = mysqli_real_escape_string($conn, $details);
 
@@ -44,8 +45,8 @@ require_once("./connection.php");
 
                 if(move_uploaded_file($filetmp, $filedestination)){
                     $md = date('Y-m-d H:i:s');
-                   
-                    $sql = "INSERT INTO  rooms(name, price, rating, roomCount, pic, details)VALUES('$name','$price', '$rating', '$roomCount','$pic', '$content ')";
+                    // $sql = "SELECT roomCount FROM rooms WHERE ";
+                    $sql = "INSERT INTO  rooms(name, price, rating, roomCount, pic, details, status)VALUES('$name','$price', '$rating', '$roomCount','$pic', '$content', '$status')";
 
                     $result = mysqli_query($conn, $sql);
                     if($result){

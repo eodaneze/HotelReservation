@@ -21,7 +21,6 @@
         </div>
         <!-- Spinner End -->
 
-
         <!-- Page Header Start -->
         <div class="container-fluid page-header mb-5 p-0" style="background-image: url(./assets/img/carousel-1.jpg);">
             <div class="container-fluid page-header-inner py-5">

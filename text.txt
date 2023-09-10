@@ -16,16 +16,20 @@
          $_SESSION['error'] = "All fields are required";
          header('location: ../roomDetails.php?id='.$room_id);
       }else{
+         // check if room is avalable 
          $checkSql = "SELECT roomCount from rooms WHERE room_id = '$room_id'";
          $checkResult = mysqli_query($conn, $checkSql);
+         $row = mysqli_fetch_assoc($checkResult);
+         $room_Count = $row['roomCount'];
+         
 
-         if($checkResult){
-            $row = mysqli_fetch_assoc($checkResult);
-            $dbRoomNo = $row['roomCount'];
+         if($room_Count > 0){
+         
+            $roomSql = "SELECT room_no FROM booking WHERE '$room_no' > '$room_Count'";
+            $roomResult = mysqli_query($conn, $roomSql);
             
-            $newRoomNo = $dbRoomNo - $room_no;
+            if($roomResult){
 
-            if($room_no > $dbRoomNo){
                $_SESSION['error'] = 'Avaliable room is less than the selected room number!. Please check another room';
                header('location: ../roomDetails.php?id='.$room_id);
             }else{
@@ -33,16 +37,19 @@
                $result = mysqli_query($conn, $sql);
    
                 $newBookingId = mysqli_insert_id($conn);
-                   //  set the room count to be the difference between the room the room in the db and the one the use selected in the frontend
-                  $updateSql = "UPDATE rooms SET roomCount = '$newRoomNo' WHERE room_id = '$room_id'";
+                   //  decrement the room count by 1;
+                  $updateSql = "UPDATE rooms SET roomCount = '$room_Count' - '$room_no' , status = 'Unavailable' WHERE room_id = '$room_id'";
                   $updateResult = mysqli_query($conn, $updateSql);
                 $_SESSION['success'] = "Your booking was successful";
                 header('location: ../viewBookingDetails.php?bookingId='.$newBookingId);
             }
          }else{
-            echo "Error: ".mysqli_error($conn);
+             $_SESSION['error'] = "Room is not avalable";
+             header('location: ../index.php');
          }
-      }
+         
+      
+        }
       }else{
          echo "bad request";
       }

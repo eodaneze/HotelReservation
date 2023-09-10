@@ -191,6 +191,7 @@
                           $rating = $row['rating'];
                           $pic = $row['pic'];
                           $id = $row['room_id'];
+                          $roomCount = $row['roomCount'];
 
                           ?>
                                  <form action="" method="post" class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -214,7 +215,13 @@
                                             <p class="text-body mb-3">The Junior Suite room is a very wide room with 2 bath and free wifi. the room is 3 * 4 in length and same with the breadth</p>
                                             <div class="d-flex justify-content-between">
                                                 <a class="btn btn-sm btn-primary rounded py-2 px-4" href="./roomDetails.php?id=<?=$id?>">View Detail</a>
-                                                <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a>
+                                                <?php
+                                                   if($roomCount > 0){
+                                                        ?> <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Available</a><?php
+                                                   }else{
+                                                      ?> <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Unavailable</a><?php
+                                                   }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>

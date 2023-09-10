@@ -18,7 +18,6 @@
 
   }
 ?>
-
 <body>
 <script src="./tinymce/js/tinymce/tinymce.min.js"></script>
   <script>
@@ -37,7 +36,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Update Room</h1>
+            <h1>Add Room</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -55,20 +54,20 @@
            </div>
            <div class="col-lg-6 mb-3">
               <label>Room Rating</label>
-              <input type="hidden" name="room_id" value="<?=$room_id?>">
-              <input type="hidden" name="photo" value="<?=$pic?>">
                <input type="number" name="rating" class="form-control" value="<?=$rating?>">
+               <input type="hidden" name="photo" value="<?=$pic?>">
+               <input type="hidden" name="room_id" value="<?=$room_id?>">
            </div>
            <div class="col-lg-6 mb-3">
               <label>Room Price</label>
-               <input type="text" name="price" class="form-control" value="<?=number_format($price, 2)?>">
+               <input type="text" name="price" class="form-control" value="<?=$price?>">
            </div>
            <div class="col-lg-6 mb-3">
               <label>Room Count</label>
                <input type="number" name="roomCount" class="form-control" value="<?=$roomCount?>">
            </div>
            <div class="col-lg-6 mb-3">
-              <label><img style="width: 8rem; height: 4rem" class="mb-2" src="./includes/roomdp/<?=$pic?>" alt=""></label>
+              <label><img style="width: 7rem;" class="mb-3" src="./includes/roomdp/<?=$pic?>" alt=""></label>
                <input type="file" name="file" class="form-control">
            </div>
            <div class="col-lg-12 mb-3">
@@ -76,7 +75,7 @@
                   <textarea id="myTextarea"  name="details" id="" cols="30" rows="10" class="form-control"><?=$details?></textarea>
               </div>
               <div class="col-lg-4">
-                   <button name="update" style="background-color: #3B518B; border: none; padding: 10px 30px; color: white; text-transform: uppercase; border-radius: 50px">Update Room</button>
+                   <button name="update" style="background-color: #3B518B; border: none; padding: 10px 30px; color: white; text-transform: uppercase; border-radius: 50px">Add Room</button>
               </div>
         </div>
        </form>

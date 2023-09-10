@@ -68,30 +68,35 @@
                 <div class="bg-white shadow" style="padding: 35px;">
                    <form action="./includes/booking.php" method="post">
                         <div class="row g-2">
-                        <div class="col-md-10">
+                        <div class="col-md-11">
                             <div class="row g-2">
                                 <div class="col-md-3">
                                     <div class="date" id="date1" data-target-input="nearest">
                                         <input type="text" class="form-control datetimepicker-input"
                                             placeholder="Check in" name="check_in" data-target="#date1" data-toggle="datetimepicker" />
                                     </div>
+                                   
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="date" id="date2" data-target-input="nearest">
                                         <input type="text" class="form-control datetimepicker-input" placeholder="Check out" name="check_out" data-target="#date2" data-toggle="datetimepicker"/>
                                     </div>
+                               
                                 </div>
                                 <input type="hidden" name="room_id" value="<?=$room_id?>">
                               
                                 <div class="col-md-3">
+                                   <input type="number" name="room_no" class="form-control" placeholder="Number of rooms">
+                                </div>
+                                <div class="col-md-2">
                                    <input type="number" name="adult" class="form-control" placeholder="Adult">
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                      <input type="number" name="children" class="form-control" placeholder="Children">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-1">
                           <?php
 
                                 if($roomCount > 0){
