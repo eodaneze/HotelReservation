@@ -65,6 +65,9 @@
                                      $result = mysqli_query($conn, $sql);
                                      $row = mysqli_fetch_assoc($result);
                                      $name = $row['name'];
+                                     $email = $row['email'];
+                                     $address = $row['address'];
+                                     $phone = $row['phone'];
                                      $getFirstname = explode(' ', $name);
                                      $firstname = $getFirstname[0];
 
@@ -73,7 +76,7 @@
                                           <div class="nav-item dropdown">
                                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Welcome <?=$firstname?></a>
                                             <div class="dropdown-menu rounded-0 m-0">
-                                                <a href="./userRegister.php" class="dropdown-item">My Account</a>
+                                                <a href="./myAccount.php" class="dropdown-item">My Account</a>
                                                 <a href="./includes/logout.php" class="dropdown-item">Logout</a>
                                                 
                                             </div>
